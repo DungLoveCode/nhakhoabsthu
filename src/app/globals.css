@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ========================================
+   DESIGN TOKENS
+======================================== */
+
 :root {
   /* Brand colors */
   --background: #fafaf7;
@@ -35,7 +39,10 @@
   --radius-2xl: 2rem;
 }
 
-/* Tailwind CSS 4 theme */
+/* ========================================
+   TAILWIND CSS 4 THEME
+======================================== */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -69,65 +76,66 @@
    BASE STYLES
 ======================================== */
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 6rem;
-}
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-/* Selection */
-::selection {
-  background: var(--secondary);
-  color: #ffffff;
-}
+  /* Selection */
+  ::selection {
+    background: var(--secondary);
+    color: #ffffff;
+  }
 
-/* Images */
-img {
-  display: block;
-  max-width: 100%;
-}
+  /* Images */
+  img {
+    display: block;
+    max-width: 100%;
+  }
 
-/* Links */
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  /* Links */
+  a {
+    text-decoration: none;
+  }
 
-/* Buttons */
-button {
-  font: inherit;
-  cursor: pointer;
-}
+  /* Buttons */
+  button {
+    font: inherit;
+    cursor: pointer;
+  }
 
-/* Focus accessibility */
-:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 4px;
+  /* Focus accessibility */
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+  }
+
+  /* Subtle interactions */
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 /* ========================================
-   SUBTLE INTERACTIONS
+   ACCESSIBILITY
 ======================================== */
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Respect accessibility preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -136,5 +144,19 @@ a {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes tooth-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
   }
 }
